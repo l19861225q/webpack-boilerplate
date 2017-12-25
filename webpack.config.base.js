@@ -22,6 +22,15 @@ const isDev = NODE_ENV === 'development'
 // 键名末尾追加 `$`，表示精准匹配
 // https://fakefish.github.io/react-webpack-cookbook/Split-app-and-vendors.html
 const alias = {
+  // React
+  'react$': path.resolve(__dirname, `./node_modules/react/cjs/${isDev
+    ? 'react.development.js'
+    : 'react.production.min.js'}`
+  ),
+  'react-dom$': path.resolve(__dirname, `./node_modules/react-dom/cjs/${isDev
+    ? 'react-dom.development.js'
+    : 'react-dom.production.min.js'}`
+  )
 }
 
 export default {
@@ -29,6 +38,7 @@ export default {
   context: __dirname,
   // 入口
   entry: {
+    vendors: ['react', 'react-dom'],
     index: path.resolve(__dirname, 'src/index.js')
   },
   // 输出
