@@ -42,7 +42,7 @@ export default {
     rules: [
       // 编译 ES6
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         // babel-loader 可以缓存处理过的模块，对于没有修改过的文件不会再重新编译，
         // cacheDirectory 有着2倍以上的速度提升，这对于 rebuild 有着非常大的性能提升
