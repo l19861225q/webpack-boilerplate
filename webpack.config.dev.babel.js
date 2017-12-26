@@ -11,6 +11,7 @@ import webpack from 'webpack'
 import HtmlPlugin from 'html-webpack-plugin'
 import webpackMerge from 'webpack-merge'
 import baseConfig from './webpack.config.base.js'
+import { dllName, dllDir } from './webpack.config.dll.babel'
 
 const { HOST, PORT_DEV } = process.env
 
@@ -29,7 +30,8 @@ export default webpackMerge({}, baseConfig, {
     new webpack.HotModuleReplacementPlugin(),
     // 注入 webpack bundle 到 HTML
     new HtmlPlugin({
-      template: './index.html'
+      template: './index.html',
+      [dllName]: `${dllDir}/${dllName}.dll.js`
     })
   ],
   // 开发服务器

@@ -13,32 +13,16 @@ import path from 'path'
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import DashboardPlugin from 'webpack-dashboard/plugin'
+import { dllManifestPath } from './webpack.config.dll.babel'
 
 const { NODE_ENV } = process.env
 const isDev = NODE_ENV === 'development'
-
-// Separate the 3rd libs
-// 当 import xxx from 'xxx' 时，会从后面的 path 加载，保证加载的准确性，节省了搜索模块的时间
-// 键名末尾追加 `$`，表示精准匹配
-// https://fakefish.github.io/react-webpack-cookbook/Split-app-and-vendors.html
-const alias = {
-  // React
-  'react$': path.resolve(__dirname, `./node_modules/react/cjs/${isDev
-    ? 'react.development.js'
-    : 'react.production.min.js'}`
-  ),
-  'react-dom$': path.resolve(__dirname, `./node_modules/react-dom/cjs/${isDev
-    ? 'react-dom.development.js'
-    : 'react-dom.production.min.js'}`
-  )
-}
 
 export default {
   // 作用域
   context: __dirname,
   // 入口
   entry: {
-    vendors: ['react', 'react-dom'],
     index: path.resolve(__dirname, 'src/index.js')
   },
   // 输出
@@ -85,7 +69,6 @@ export default {
   },
   // 解析
   resolve: {
-    alias,
     // 自动解析确定的扩展，引入模块时可不带后缀
     // e.g.
     // import File from '../path/to/file'
@@ -106,12 +89,17 @@ export default {
   plugins: [
     // 这是一个通过 DefinePlugin 来设置 process.env 环境变量的快捷方式
     new webpack.EnvironmentPlugin(['NODE_ENV']),
-    new DashboardPlugin(),
-    // 提取公共 JS
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendors',
-      filename: `vendors-[hash:8]${isDev ? '' : '.min'}.js`,
+    // 读取 dll
+    new webpack.DllReferencePlugin({
+      manifest: dllManifestPath
     }),
+    // 提取公共 JS
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'vendors',
+    //   filename: `vendors-[hash:8]${isDev ? '' : '.min'}.js`,
+    // }),
+    // 仪表盘
+    new DashboardPlugin(),
     // 提取公共 CSS
     new ExtractTextPlugin(`style-[contenthash:8]${isDev ? '' : '.min'}.css`)
   ]

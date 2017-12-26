@@ -10,6 +10,8 @@
     "rimraf": "./node_modules/.bin/rimraf"
   },
   "scripts": {
+    "dll:dev": "cross-env NODE_ENV=development webpack --config webpack.config.dll.babel.js",
+    "dll:pro": "cross-env NODE_ENV=production webpack --config webpack.config.dll.babel.js",
     "start": "cross-env NODE_ENV=development webpack-dashboard -- webpack-dev-server --config webpack.config.dev.babel.js",
     "build": "cross-env npm run remove:build && NODE_ENV=production webpack-dashboard -- webpack -p --config webpack.config.pro.babel.js",
     "remove:build": "rimraf ./dist"
@@ -40,6 +42,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.26.0",
     "clean-webpack-plugin": "^0.1.17",
+    "copy-webpack-plugin": "^4.3.1",
     "cross-env": "^5.1.3",
     "css-loader": "^0.25.0",
     "dotenv": "^4.0.0",

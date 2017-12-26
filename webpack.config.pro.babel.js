@@ -12,7 +12,11 @@ import webpackMerge from 'webpack-merge'
 import ImageminPlugin from 'imagemin-webpack-plugin'
 import CleanPlugin from 'clean-webpack-plugin'
 import HtmlPlugin from 'html-webpack-plugin'
+import CopyPlugin from 'copy-webpack-plugin'
 import baseConfig from './webpack.config.base.js'
+import { dllName, dllDir } from './webpack.config.dll.babel'
+
+const dllFile = `${dllName}.dll.min.js`
 
 const config = webpackMerge({}, baseConfig, {
   // 编译方式
@@ -48,11 +52,19 @@ const config = webpackMerge({}, baseConfig, {
     // 注入 webpack bundle 到 HTML
     new HtmlPlugin({
       template: './index.html',
+      [dllName]: dllFile,
       // 压缩 HTML
       minify: {
         collapseWhitespace: true
       }
-    })
+    }),
+    // Copy dll to /dist
+    new CopyPlugin([
+      {
+        from: path.join(__dirname, dllDir, dllFile),
+        flatten: true
+      }
+    ])
   ]
 })
 
