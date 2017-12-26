@@ -12,7 +12,6 @@ require('dotenv').config() // read ./.env
 import path from 'path'
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import DashboardPlugin from 'webpack-dashboard/plugin'
 import { dllManifestPath } from './webpack.config.dll.babel'
 
 const { NODE_ENV } = process.env
@@ -93,13 +92,6 @@ export default {
     new webpack.DllReferencePlugin({
       manifest: dllManifestPath
     }),
-    // 提取公共 JS
-    // new webpack.optimize.CommonsChunkPlugin({
-    //   name: 'vendors',
-    //   filename: `vendors-[hash:8]${isDev ? '' : '.min'}.js`,
-    // }),
-    // 仪表盘
-    new DashboardPlugin(),
     // 提取公共 CSS
     new ExtractTextPlugin(`style-[contenthash:8]${isDev ? '' : '.min'}.css`)
   ]

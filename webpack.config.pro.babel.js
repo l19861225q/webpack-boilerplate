@@ -13,6 +13,7 @@ import ImageminPlugin from 'imagemin-webpack-plugin'
 import CleanPlugin from 'clean-webpack-plugin'
 import HtmlPlugin from 'html-webpack-plugin'
 import CopyPlugin from 'copy-webpack-plugin'
+import CompressionPlugin from 'compression-webpack-plugin'
 import baseConfig from './webpack.config.base.js'
 import { dllName, dllDir } from './webpack.config.dll.babel'
 
@@ -64,7 +65,11 @@ const config = webpackMerge({}, baseConfig, {
         from: path.join(__dirname, dllDir, dllFile),
         flatten: true
       }
-    ])
+    ]),
+    // 开启 Gzip 压缩
+    new CompressionPlugin({
+      test: /\.js$|\.html$|\.css$/
+    })
   ]
 })
 
