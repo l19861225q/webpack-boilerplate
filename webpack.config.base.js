@@ -12,7 +12,6 @@ require('dotenv').config() // read ./.env
 import path from 'path'
 import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import DashboardPlugin from 'webpack-dashboard/plugin'
 
 const { NODE_ENV } = process.env
 const isDev = NODE_ENV === 'development'
@@ -96,7 +95,6 @@ export default {
   plugins: [
     // 这是一个通过 DefinePlugin 来设置 process.env 环境变量的快捷方式
     new webpack.EnvironmentPlugin(['NODE_ENV']),
-    new DashboardPlugin(),
     // 提取公共 JS
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendors',

@@ -12,6 +12,7 @@ import webpackMerge from 'webpack-merge'
 import ImageminPlugin from 'imagemin-webpack-plugin'
 import CleanPlugin from 'clean-webpack-plugin'
 import HtmlPlugin from 'html-webpack-plugin'
+import CompressionPlugin from 'compression-webpack-plugin'
 import baseConfig from './webpack.config.base.js'
 
 const config = webpackMerge({}, baseConfig, {
@@ -52,6 +53,10 @@ const config = webpackMerge({}, baseConfig, {
       minify: {
         collapseWhitespace: true
       }
+    }),
+    // 开启 Gzip 压缩
+    new CompressionPlugin({
+      test: /\.js$|\.html$|\.css$/
     })
   ]
 })
