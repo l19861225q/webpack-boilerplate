@@ -15,7 +15,7 @@ const isDev = NODE_ENV === 'development'
 export const dllName = 'vendors'
 export const dllDir = '/dll'
 export const dllPath = path.join(__dirname, dllDir)
-export const dllManifestPath = path.join(dllPath, `${dllName}-menifest.${NODE_ENV}.json`)
+export const dllManifestPath = path.join(dllPath, `${dllName}-manifest.${NODE_ENV}.json`)
 
 // Separate the 3rd libs
 // 当 import xxx from 'xxx' 时，会从后面的 path 加载，保证加载的准确性，节省了搜索模块的时间
