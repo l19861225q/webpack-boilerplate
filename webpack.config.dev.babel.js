@@ -13,7 +13,7 @@ import webpackMerge from 'webpack-merge'
 import baseConfig from './webpack.config.base.js'
 import { dllName, dllDir } from './webpack.config.dll.babel'
 
-const { HOST, PORT_DEV } = process.env
+const { HOST, PORT } = process.env
 
 export default webpackMerge({}, baseConfig, {
   // 编译方式
@@ -37,7 +37,7 @@ export default webpackMerge({}, baseConfig, {
   // 开发服务器
   devServer: {
     host: HOST,
-    port: PORT_DEV,
+    port: PORT,
     stats: {
       // 隐藏子级的信息
       children: false,
