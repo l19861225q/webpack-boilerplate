@@ -80,7 +80,7 @@ npm run build
 
 ## Versioning
 
-We can maybe use [SemVer](http://semver.org/) for versioning. For the versions available, see the [link to tags on this repository](https://github.com/l19861225q/webpack-boilerplate/tags).
+We can maybe use [SemVer](http://semver.org) for versioning. For the versions available, see the [link to tags on this repository](https://github.com/l19861225q/webpack-boilerplate/tags).
 
 ## Configuration
 
