@@ -39,13 +39,13 @@ Based on `node@8.3.0`
 
 If you added new vendor dependencies like `lodash`, please update
 ```javascript
-// webpack.config.dll.babel.js
+// webpack.config.dll.js
 const alias = {
   // Add your dependencies
   'lodash$': '' // The `lodash` absolute file path
 }
 ...
-export default {
+module.exports.default = {
   entry: {
     [dllName]: [
       // Add your dependencies
