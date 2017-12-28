@@ -6,16 +6,16 @@
  * @Email:  112486391@qq.com
  */
 
-import path from 'path'
-import webpack from 'webpack'
-import HtmlPlugin from 'html-webpack-plugin'
-import webpackMerge from 'webpack-merge'
-import baseConfig from './webpack.config.base.js'
-import { dllName, dllDir } from './webpack.config.dll.babel'
+const path = require('path')
+const webpack = require('webpack')
+const HtmlPlugin = require('html-webpack-plugin')
+const webpackMerge = require('webpack-merge')
+const baseConfig = require('./webpack.config.base.js')
+const { dllName, dllDir } = require('./webpack.config.dll')
 
 const { HOST, PORT } = process.env
 
-export default webpackMerge({}, baseConfig, {
+module.exports = webpackMerge({}, baseConfig, {
   // 编译方式
   devtool: 'eval',
   // 是否监听文件变化从而触发重新编译

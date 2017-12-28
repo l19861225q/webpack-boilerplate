@@ -5,17 +5,22 @@
  * @Email:  112486391@qq.com
  */
 
-import path from 'path'
-import webpack from 'webpack'
-import CleanPlugin from 'clean-webpack-plugin'
+const path = require('path')
+const webpack = require('webpack')
+const CleanPlugin = require('clean-webpack-plugin')
 
 const { NODE_ENV } = process.env
 const isDev = NODE_ENV === 'development'
 
-export const dllName = 'vendors'
-export const dllDir = '/dll'
-export const dllPath = path.join(__dirname, dllDir)
-export const dllManifestPath = path.join(dllPath, `${dllName}-manifest.${NODE_ENV}.json`)
+const dllName = 'vendors'
+const dllDir = '/dll'
+const dllPath = path.join(__dirname, dllDir)
+const dllManifestPath = path.join(dllPath, `${dllName}-manifest.${NODE_ENV}.json`)
+
+module.exports.dllName = dllName
+module.exports.dllDir = dllDir
+module.exports.dllPath = dllPath
+module.exports.dllManifestPath = dllManifestPath
 
 // Separate the 3rd libs
 // 当 import xxx from 'xxx' 时，会从后面的 path 加载，保证加载的准确性，节省了搜索模块的时间
@@ -33,7 +38,7 @@ const alias = {
   )
 }
 
-export default {
+module.exports.default = {
   // 编译方式
   devtool: isDev ? 'eval' : false,
   // 入口

@@ -9,15 +9,22 @@
 /* eslint-disable import/first */
 require('dotenv').config() // read ./.env
 
-import path from 'path'
-import webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
-import { dllManifestPath } from './webpack.config.dll.babel'
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const { dllManifestPath } = require('./webpack.config.dll')
 
 const { NODE_ENV } = process.env
 const isDev = NODE_ENV === 'development'
 
-export default {
+// Separate the 3rd libs
+// 当 import xxx from 'xxx' 时，会从后面的 path 加载，保证加载的准确性，节省了搜索模块的时间
+// 键名末尾追加 `$`，表示精准匹配
+// https://fakefish.github.io/react-webpack-cookbook/Split-app-and-vendors.html
+const alias = {
+}
+
+module.exports = {
   // 作用域
   context: __dirname,
   // 入口

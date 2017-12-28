@@ -19,7 +19,8 @@ npm i
 ### Built With
 - [eslint](https://eslint.org)
 - [babel](https://babeljs.io)
-  - es6+
+  - env
+  - runtime
 - [webpack](https://webpack.js.org)
   - dev server + hmr `develop mode`
   - jsx
