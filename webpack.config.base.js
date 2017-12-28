@@ -9,9 +9,9 @@
 /* eslint-disable import/first */
 require('dotenv').config() // read ./.env
 
-import path from 'path'
-import webpack from 'webpack'
-import ExtractTextPlugin from 'extract-text-webpack-plugin'
+const path = require('path')
+const webpack = require('webpack')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const { NODE_ENV } = process.env
 const isDev = NODE_ENV === 'development'
@@ -23,7 +23,7 @@ const isDev = NODE_ENV === 'development'
 const alias = {
 }
 
-export default {
+module.exports = {
   // 作用域
   context: __dirname,
   // 入口

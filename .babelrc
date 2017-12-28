@@ -1,5 +1,21 @@
 {
-  "presets": ["env", "stage-0"],
+  "presets": [
+    ["env", {
+      "debug": true,
+      "modules": false,
+      "targets": {
+        "browsers": [
+          ">3%",
+          "iOS >= 9",
+          "Android >= 4.4"
+        ]
+      }
+    }]
+  ],
   "plugins": [
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false
+    }]
   ]
 }

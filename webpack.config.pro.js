@@ -6,16 +6,16 @@
  * @Email:  112486391@qq.com
  */
 
-import path from 'path'
-import webpack from 'webpack'
-import webpackMerge from 'webpack-merge'
-import ImageminPlugin from 'imagemin-webpack-plugin'
-import CleanPlugin from 'clean-webpack-plugin'
-import HtmlPlugin from 'html-webpack-plugin'
-import CompressionPlugin from 'compression-webpack-plugin'
-import baseConfig from './webpack.config.base.js'
+const path = require('path')
+const webpack = require('webpack')
+const webpackMerge = require('webpack-merge')
+const ImageminPlugin = require('imagemin-webpack-plugin').default
+const CleanPlugin = require('clean-webpack-plugin')
+const HtmlPlugin = require('html-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
+const baseConfig = require('./webpack.config.base.js')
 
-const config = webpackMerge({}, baseConfig, {
+module.exports = webpackMerge({}, baseConfig, {
   // 编译方式
   devtool: false,
   // 是否监听文件变化从而触发重新编译
@@ -32,7 +32,7 @@ const config = webpackMerge({}, baseConfig, {
     }),
     // 压缩 JS
     new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false },
+      compress: { warnings: false }
     }),
     // 压缩图片
     new ImageminPlugin({
@@ -60,5 +60,3 @@ const config = webpackMerge({}, baseConfig, {
     })
   ]
 })
-
-module.exports = config
