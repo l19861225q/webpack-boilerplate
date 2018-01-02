@@ -2,7 +2,7 @@
 
 # Webpack Boilerplate
 
-A develop boilerplate of `webpack`, `es6+`, `jsx` :shipit:
+A develop boilerplate of `webpack`, `es6+`, `jsx`, `tsx` :shipit:
 
 ## Installing / Getting started
 
@@ -18,11 +18,13 @@ npm i
 
 ### Built With
 - [eslint](https://eslint.org)
+- [tslint](https://palantir.github.io/tslint)
 - [babel](https://babeljs.io)
   - env
   - runtime
 - [webpack](https://webpack.js.org)
   - dev server + hmr `develop mode`
+  - tsx
   - jsx
   - scss (postcss.autoprefixer)
   - minify of assets
