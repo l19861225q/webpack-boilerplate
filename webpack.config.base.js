@@ -21,7 +21,7 @@ const isDev = NODE_ENV === 'development'
 // 当 import xxx from 'xxx' 时，会从后面的 path 加载，保证加载的准确性，节省了搜索模块的时间
 // 键名末尾追加 `$`，表示精准匹配
 // https://fakefish.github.io/react-webpack-cookbook/Split-app-and-vendors.html
-const alias = {
+const alias = { // eslint-disable-line no-unused-vars
 }
 
 module.exports = {

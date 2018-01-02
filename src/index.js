@@ -7,14 +7,19 @@
 
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import PropTypes from 'prop-types'
 
 class App extends Component {
+  static propTypes = {
+    content: PropTypes.string.isRequired
+  }
+
   render () {
-    return 'App'
+    return this.props.content
   }
 }
 
 render(
-  <App />,
+  <App content="App" />,
   document.querySelector('main')
 )

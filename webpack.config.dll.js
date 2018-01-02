@@ -30,12 +30,16 @@ const alias = {
   // React
   'react$': path.resolve(__dirname, `./node_modules/react/cjs/${isDev
     ? 'react.development.js'
-    : 'react.production.min.js'}`
-  ),
+    : 'react.production.min.js'
+  }`),
   'react-dom$': path.resolve(__dirname, `./node_modules/react-dom/cjs/${isDev
     ? 'react-dom.development.js'
-    : 'react-dom.production.min.js'}`
-  )
+    : 'react-dom.production.min.js'
+  }`),
+  'prop-types$': path.resolve(__dirname, `./node_modules/prop-types/prop-types${isDev
+    ? '.js'
+    : '.min.js'
+  }`)
 }
 
 module.exports.default = {
