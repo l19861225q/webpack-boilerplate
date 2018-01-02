@@ -21,6 +21,7 @@ npm i
 - [babel](https://babeljs.io)
   - env
   - runtime
+  - transform-class-properties
 - [webpack](https://webpack.js.org)
   - dev server + hmr `develop mode`
   - jsx
@@ -30,6 +31,7 @@ npm i
   - dll
 - [react](https://reactjs.org)
   - [react-dom](https://reactjs.org/docs/react-dom.html)
+  - [prop-types](https://github.com/facebook/prop-types)
 
 ### Prerequisites
 Based on `node@8.3.0`
