@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "commonjs",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "noEmitHelpers": true,
+    "jsx": "preserve",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  },
+  "exclude": [
+    "node_modules",
+    "typings/main",
+    "typings/main.d.ts"
+  ],
+  "compileOnSave": false
+}
