@@ -2,7 +2,7 @@
 
 # Webpack Boilerplate
 
-A develop boilerplate of `webpack`, `es6+`, `jsx`, `react`, `react-dom` :shipit:
+A develop boilerplate of `webpack`, `es6+`, `jsx`, `tsx`, `react`, `react-dom` :shipit:
 
 ## Installing / Getting started
 
@@ -18,20 +18,22 @@ npm i
 
 ### Built With
 - [eslint](https://eslint.org)
+- [tslint](https://palantir.github.io/tslint)
 - [babel](https://babeljs.io)
   - env
   - runtime
   - transform-class-properties
 - [webpack](https://webpack.js.org)
   - dev server + hmr `develop mode`
+  - tsx
   - jsx
   - scss (postcss.autoprefixer)
   - minify of assets
   - gzip of assets `product mode`
   - dll
 - [react](https://reactjs.org)
+  - [@types/react](https://www.npmjs.com/package/@types/react)
   - [react-dom](https://reactjs.org/docs/react-dom.html)
-  - [prop-types](https://github.com/facebook/prop-types)
 
 ### Prerequisites
 Based on `node@8.3.0`

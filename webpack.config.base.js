@@ -29,7 +29,7 @@ module.exports = {
   context: __dirname,
   // 入口
   entry: {
-    index: path.resolve(__dirname, 'src/index.js')
+    index: path.resolve(__dirname, 'src')
   },
   // 输出
   output: {
@@ -40,6 +40,12 @@ module.exports = {
   // 模块
   module: {
     rules: [
+      // 编译 TS
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: 'ts-loader'
+      },
       // 编译 ES6
       {
         test: /\.jsx?$/,

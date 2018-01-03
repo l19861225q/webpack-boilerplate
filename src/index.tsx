@@ -5,16 +5,15 @@
  * @Email:  112486391@qq.com
  */
 
-import React, { Component } from 'react'
+import * as React from 'react'
 import { render } from 'react-dom'
-import PropTypes from 'prop-types'
 
-class App extends Component {
-  static propTypes = {
-    content: PropTypes.string.isRequired
-  }
+interface IAppProps {
+  content: string
+}
 
-  render () {
+class App extends React.Component<IAppProps> {
+  public render() {
     return this.props.content
   }
 }
